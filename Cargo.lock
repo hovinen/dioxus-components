@@ -2049,6 +2049,7 @@ dependencies = [
 [[package]]
 name = "dioxus-icons"
 version = "0.1.0"
+source = "git+https://github.com/hovinen/dioxus-icons?branch=update-to-latest-dioxus#96611278d3982b91187b00acd825cad7f3d1bb10"
 dependencies = [
  "dioxus",
  "dioxus-core-template",
@@ -2345,7 +2346,7 @@ dependencies = [
 [[package]]
 name = "dioxus-test"
 version = "0.1.0"
-source = "git+https://github.com/DioxusLabs/dioxus-test?branch=support-aria-label-and-labelledby#ac487c31649786107c011003be1e5db91b927c13"
+source = "git+https://github.com/DioxusLabs/dioxus-test?branch=add-expect-no-matching-element#783fdaeb83cde2ac8e79b7032e5380ff6c215b19"
 dependencies = [
  "accesskit 0.25.0",
  "blitz-dom",
@@ -5917,6 +5918,7 @@ dependencies = [
  "serde_json",
  "strum 0.27.2",
  "time",
+ "tokio",
  "tracing",
  "unic-langid",
 ]
