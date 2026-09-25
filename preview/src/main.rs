@@ -1182,66 +1182,75 @@ fn Home(iframe: Option<bool>, dark_mode: Option<bool>) -> Element {
     }
 }
 
+#[derive(Clone, Copy)]
+struct ComponentFn(fn() -> Element);
+
+impl PartialEq for ComponentFn {
+    fn eq(&self, other: &Self) -> bool {
+        std::ptr::fn_addr_eq(self.0, other.0)
+    }
+}
+
 struct MasonryEntry {
-    component: fn() -> Element,
+    component: ComponentFn,
     popout: bool,
 }
 
 const BLOCKS: &[MasonryEntry] = &[
     MasonryEntry {
-        component: BlockSignIn,
+        component: ComponentFn(BlockSignIn),
         popout: false,
     },
     MasonryEntry {
-        component: BlockProfile,
+        component: ComponentFn(BlockProfile),
         popout: false,
     },
     MasonryEntry {
-        component: BlockStats,
+        component: ComponentFn(BlockStats),
         popout: false,
     },
     MasonryEntry {
-        component: BlockInbox,
+        component: ComponentFn(BlockInbox),
         popout: false,
     },
     MasonryEntry {
-        component: BlockTasks,
+        component: ComponentFn(BlockTasks),
         popout: false,
     },
     MasonryEntry {
-        component: BlockNotifications,
+        component: ComponentFn(BlockNotifications),
         popout: false,
     },
     MasonryEntry {
-        component: BlockPlayer,
+        component: ComponentFn(BlockPlayer),
         popout: false,
     },
     MasonryEntry {
-        component: BlockCommand,
+        component: ComponentFn(BlockCommand),
         popout: true,
     },
     MasonryEntry {
-        component: BlockComposer,
+        component: ComponentFn(BlockComposer),
         popout: false,
     },
     MasonryEntry {
-        component: BlockPricing,
+        component: ComponentFn(BlockPricing),
         popout: false,
     },
     MasonryEntry {
-        component: BlockFilters,
+        component: ComponentFn(BlockFilters),
         popout: false,
     },
     MasonryEntry {
-        component: BlockColorPalette,
+        component: ComponentFn(BlockColorPalette),
         popout: true,
     },
     MasonryEntry {
-        component: BlockTabs,
+        component: ComponentFn(BlockTabs),
         popout: false,
     },
     MasonryEntry {
-        component: BlockSchedule,
+        component: ComponentFn(BlockSchedule),
         popout: false,
     },
 ];
@@ -1266,10 +1275,9 @@ fn WidgetMasonry() -> Element {
     }
 }
 
-#[allow(unpredictable_function_pointer_comparisons)]
 #[component]
-fn MasonryCard(component: fn() -> Element, #[props(default)] popout: bool) -> Element {
-    let Comp = component;
+fn MasonryCard(component: ComponentFn, #[props(default)] popout: bool) -> Element {
+    let Comp = component.0;
     let class = if popout {
         "dx-widget-card dx-widget-card-popout"
     } else {
