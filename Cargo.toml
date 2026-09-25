@@ -8,13 +8,15 @@ dioxus-test = { git = "https://github.com/DioxusLabs/dioxus-test", branch = "sup
 tracing = { version = "0.1", features = ["std"] }
 
 dioxus = { version = "0.8.0-alpha.1", git = "https://github.com/DioxusLabs/dioxus" }
-dioxus-icons = { git = "https://github.com/ealmloff/dioxus-icons", branch = "0.8" }
+dioxus-icons = { path = "../dioxus-icons/crates/dioxus-icons" }
 dioxus-i18n = { git = "https://github.com/ealmloff/dioxus-i18n", branch = "0.8" }
 dioxus-rsx = { version = "0.8.0-alpha.1", git = "https://github.com/DioxusLabs/dioxus" }
 dioxus-ssr = { version = "0.8.0-alpha.1", git = "https://github.com/DioxusLabs/dioxus" }
 dioxus-sdk-time = { git = "https://github.com/hovinen/sdk.git", branch = "0.8" }
 
 [patch.crates-io]
+dioxus = { version = "0.8.0-alpha.1", git = "https://github.com/DioxusLabs/dioxus" }
+dioxus-signals = { version = "0.8.0-alpha.1", git = "https://github.com/DioxusLabs/dioxus" }
 blitz-dom = { git = "https://github.com/hovinen/blitz", branch = "support-aria-label-and-labelledby" }
 blitz-traits = { git = "https://github.com/hovinen/blitz", branch = "support-aria-label-and-labelledby" }
 blitz-paint = { git = "https://github.com/hovinen/blitz", branch = "support-aria-label-and-labelledby" }

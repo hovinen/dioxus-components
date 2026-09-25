@@ -46,7 +46,7 @@ pub fn DragAndDropList(props: DragAndDropListProps) -> Element {
             let key = item
                 .as_ref()
                 .ok()
-                .and_then(|v| v.key.clone())
+                .and_then(|v| v.key().map(|s| s.to_string()))
                 .unwrap_or_else(|| idx.to_string());
             rsx! {
                 DragIcon { key: "{key}" }
