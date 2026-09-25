@@ -6501,6 +6501,7 @@ dependencies = [
  "dioxus-icons",
  "dioxus-primitives",
  "dioxus-ssr",
+ "dioxus-test",
  "palette",
  "pulldown-cmark",
  "serde_json",
